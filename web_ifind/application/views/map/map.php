@@ -23,7 +23,7 @@
 
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <?php
-if($device_id){
+if($order){
 ?>
     <script type="text/javascript">
 
@@ -32,7 +32,7 @@ if($device_id){
         var socket = io.connect(urlHost);
         socket.on('connect', function(){
             console.log('client connected');
-            socket.emit('subscribe', {channel: <?php echo $device_id; ?>});
+            socket.emit('subscribe', {channel: <?php echo $order; ?>});
         });
 
 
@@ -90,7 +90,7 @@ if($device_id){
         var userMarker = createMarker_map(markerOptions);
 
 <?php
-if(empty($device_id)){
+if(empty($order)){
 ?>
         var myLatlng = new google.maps.LatLng(carLocationsLat, carLocationsLong);
         google.maps.event.addDomListener(window, "resize", function() { map.setCenter(myLatlng); }); // Keeps the Pin Central when resizing the browser on responsive sites

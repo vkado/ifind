@@ -28,7 +28,6 @@ class Map extends MY_Controller {
         $order = $this->input->post('order') ? $this->input->post('order') : '';
         $error = $this->input->get('error') ? $this->input->get('error') : '';
 
-        $this->data['device_id'] = '';
         $this->data['error'] = $error;
 
         $this->data['order'] = $order;
@@ -52,9 +51,6 @@ class Map extends MY_Controller {
         if(empty($locations)){
             redirect('?error='.$this->lang->line('no_data'), 'refresh');
         }
-
-        $device = $this->Order_device_model->getDeviceIdWithOrderId($order);
-        $this->data['device_id'] = $device->device_id;
 
         $location_data = $this->array_value_recursive('point', $locations);
 

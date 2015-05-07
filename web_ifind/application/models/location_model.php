@@ -12,7 +12,6 @@ class Location_model extends CI_Model
     public function getLocationFromOrder($order_id) {
         $this->db->select('point');
         $this->db->where('order_id',db_clean($order_id), 128);
-        $this->db->join('order_device', 'order_device.device_id = location.device_id');
         $this->db->order_by('location.date_added', 'desc');
         $Q = $this->db->get('location');
 
