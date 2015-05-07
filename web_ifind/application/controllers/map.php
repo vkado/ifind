@@ -28,10 +28,17 @@ class Map extends MY_Controller {
         $order = $this->input->post('order') ? $this->input->post('order') : '';
         $error = $this->input->get('error') ? $this->input->get('error') : '';
 
-        $this->data['order'] = $order;
+        $this->data['device_id'] = '';
         $this->data['error'] = $error;
 
-        $this->data['main'] = 'map/order';
+        $this->data['order'] = $order;
+        $this->data['point'] = '13.7278956,100.52412349999997';
+        $this->data['lat'] = '13.7278956';
+        $this->data['long'] = '100.52412349999997';
+
+        $this->data['map'] = $this->mapWithLocation(array());
+
+        $this->data['main'] = 'map/map';
 
         $this->load->vars($this->data);
         $this->render_page('template');
@@ -54,6 +61,11 @@ class Map extends MY_Controller {
         $this->data['order'] = $order;
         $this->data['point'] = $location_data[0];
 
+        $latlong = explode(',', $location_data[0]);
+
+        $this->data['lat'] = $latlong[0];
+        $this->data['long'] = $latlong[1];
+
         $this->data['map'] = $this->mapWithLocation($location_data);
 
         $this->data['main'] = 'map/map';
@@ -64,7 +76,7 @@ class Map extends MY_Controller {
 
     private function mapWithLocation($locations)
     {
-        $config['center'] = $locations[0];
+        $config['center'] = $locations ? $locations[0] : '13.7278956,100.52412349999997';
         $config['zoom'] = '13';
         $config['styles'] = array(
             array("name"=>"iFind", "definition"=>array(
@@ -86,18 +98,20 @@ class Map extends MY_Controller {
         $config['mapTypeControlStyle'] = "DROPDOWN_MENU";
         $this->googlemaps->initialize($config);
 
-        $marker = array();
-        $marker['position'] = $locations[0];
-        $marker['icon'] = "http://image.weevirus.com/googlecar.png";
-        $marker['icon_scaledSize'] = "20,20";
-        $marker['animation'] = "DROP";
-        $marker['title'] = "iFind";
-        $this->googlemaps->add_marker($marker);
+        if($locations){
+            $marker = array();
+            $marker['position'] = $locations[0];
+            $marker['icon'] = "http://image.weevirus.com/googlecar.png";
+            $marker['icon_scaledSize'] = "20,20";
+            $marker['animation'] = "DROP";
+            $marker['title'] = "iFind";
+            $this->googlemaps->add_marker($marker);
 
-        $polyline = array();
-        $polyline['points'] = $locations;
-        $polyline['strokeColor'] = '#00B2EE';
-        $this->googlemaps->add_polyline($polyline);
+            $polyline = array();
+            $polyline['points'] = $locations;
+            $polyline['strokeColor'] = '#00B2EE';
+            $this->googlemaps->add_polyline($polyline);
+        }
 
         return $this->googlemaps->create_map();
     }

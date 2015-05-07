@@ -62,6 +62,8 @@ module.exports = function(grunt) {
                     '<%= config.src %>/js/base/jquery-2.1.1.js',
                     '<%= config.src %>/js/base/bootstrap.js',
                     '<%= config.src %>/js/base/jquery.timeago.js',
+                    '<%= config.src %>/js/wow.min.js',
+                    '<%= config.src %>/js/custom.js',
                     '<%= config.src %>/js/script.js'
                 ],
                 dest: '<%= config.assets_js %>/script.min.js'

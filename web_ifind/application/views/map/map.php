@@ -1,6 +1,6 @@
 <div>
     <?php
-    echo form_open('tracking');
+    echo form_open('tracking#order');
     ?>
     <div class="form-group form-group-lg">
         <div class="col-md-6">
@@ -21,30 +21,33 @@
     <?php echo $map['html']; ?>
 </div>
 
-
-<script type="text/javascript">
-    var myLatlng = new google.maps.LatLng(<?php echo $point; ?>);
-    google.maps.event.addDomListener(window, "resize", function() { map.setCenter(myLatlng); }); // Keeps the Pin Central when resizing the browser on responsive sites
-</script>
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-<script type="text/javascript">
+<?php
+if($device_id){
+?>
+    <script type="text/javascript">
 
-    var urlHost = 'http://localhost:3000';
+        var urlHost = 'http://localhost:3000';
 
-    var socket = io.connect(urlHost);
-    socket.on('connect', function(){
-        console.log('client connected');
-        socket.emit('subscribe', {channel: <?php echo $device_id; ?>});
-    });
+        var socket = io.connect(urlHost);
+        socket.on('connect', function(){
+            console.log('client connected');
+            socket.emit('subscribe', {channel: <?php echo $device_id; ?>});
+        });
 
 
-    socket.on('message', function(data){
+        socket.on('message', function(data){
 //        data = JSON.parse(data);
-        console.log(data);
-    });
+            console.log(data);
+        });
 
-</script>
-<script>
+    </script>
+<?php
+}
+?>
+<script type="text/javascript">
+    var carLocationsLat = '<?php echo $lat; ?>';
+    var carLocationsLong = '<?php echo $long; ?>';
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(success, error);
@@ -58,7 +61,10 @@
             url: "http://image.weevirus.com/3d-human-ok.png",
             scaledSize: new google.maps.Size(30,30)};
 
-        var userLatlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+        carLocationsLat = position.coords.latitude;
+        carLocationsLong = position.coords.longitude;
+
+        var userLatlng = new google.maps.LatLng(carLocationsLat,carLocationsLong);
 
         var markerOptions = {
             map: map,
@@ -69,6 +75,14 @@
         };
         var userMarker = createMarker_map(markerOptions);
 
+<?php
+if(empty($device_id)){
+?>
+        var myLatlng = new google.maps.LatLng(carLocationsLat, carLocationsLong);
+        google.maps.event.addDomListener(window, "resize", function() { map.setCenter(myLatlng); }); // Keeps the Pin Central when resizing the browser on responsive sites
+<?php
+}
+?>
     }
 
     function error(msg) {
@@ -82,4 +96,6 @@
 
     navigator.geolocation.clearWatch(watchId);
 
+    var myLatlng = new google.maps.LatLng(carLocationsLat, carLocationsLong);
+    google.maps.event.addDomListener(window, "resize", function() { map.setCenter(myLatlng); }); // Keeps the Pin Central when resizing the browser on responsive sites
 </script>
