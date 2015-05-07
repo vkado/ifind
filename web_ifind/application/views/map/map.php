@@ -66,6 +66,20 @@ if($device_id){
 
         var userLatlng = new google.maps.LatLng(carLocationsLat,carLocationsLong);
 
+        var draw_circle = null;
+
+        var circleOptions = {
+            strokeColor: "0.8",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.3,
+            map: map,
+            center: userLatlng,
+            radius: 1000
+        };
+        draw_circle = new google.maps.Circle(circleOptions);
+
         var markerOptions = {
             map: map,
             position: userLatlng,

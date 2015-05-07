@@ -113,6 +113,8 @@ class Map extends MY_Controller {
             $this->googlemaps->add_polyline($polyline);
         }
 
+
+
         return $this->googlemaps->create_map();
     }
 
