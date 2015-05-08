@@ -28,6 +28,30 @@ class Front extends MY_Controller {
       
     }
 
+    public function index()
+    {
+        echo "FRONT PAGE!!";
+      
+    }
+
+    public function searchOrder()
+    {
+        echo "searchOrder PAGE!!";
+      
+    }
+
+    public function showOrder()
+    {
+        echo "showOrder PAGE!!";
+      
+    }
+
+    public function showMap()
+    {
+        echo "showMap PAGE!!";
+      
+    }
+
 }
 
 /* End of file welcome.php */
