@@ -27,6 +27,9 @@ if($order){
 ?>
     <script type="text/javascript">
 
+        var userMarker = {};
+        var carMarker = {};
+
         var urlHost = '<?php echo NODE_URL; ?>';
 
         var socket = io.connect(urlHost);
@@ -37,8 +40,53 @@ if($order){
 
 
         socket.on('message', function(data){
-//        data = JSON.parse(data);
-            console.log(data);
+
+            var marker_count = markers_map.length - 1;
+
+            for (var i = 0; i < markers_map.length; i++) {
+                if(map.getBounds().contains(markers_map[marker_count].getPosition())){
+                    if(markers_map[i].title == 'iFind'){
+                        carMarker = markers_map[i];
+                    }
+                    //userMarker = markers_map[marker_count];
+                    //carMarker = markers_map[0];
+                }
+            }
+
+            if(carMarker){
+
+                var carLastLatLng = new google.maps.LatLng(carMarker.position.A, carMarker.position.F);
+                var carNewLatLng = new google.maps.LatLng(data.lat, data.long);
+
+                var runnningPlanCoordinates = [
+                    carLastLatLng,
+                    carNewLatLng
+                ];
+
+                var runningPath = new google.maps.Polyline({
+                    path: runnningPlanCoordinates,
+                    strokeColor: '#00B2EE',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2
+                });
+
+                runningPath.setMap(map);
+
+                marker_0.setMap(null);
+
+                var marker_icon = {
+                    url: "http://image.weevirus.com/googlecar.png",
+                    scaledSize: new google.maps.Size(20,20)};
+
+                marker_0 = new google.maps.Marker({
+                    map: map,
+                    position: carNewLatLng,
+                    icon: marker_icon,
+                    title: "iFind",
+                    animation:  google.maps.Animation.DROP
+                });
+            }
+
         });
 
     </script>
@@ -46,6 +94,7 @@ if($order){
 }
 ?>
 <script type="text/javascript">
+
     var carLocationsLat = '<?php echo $lat; ?>';
     var carLocationsLong = '<?php echo $long; ?>';
 
@@ -68,7 +117,7 @@ if($order){
 
         var draw_circle = null;
 
-        var circleOptions = {
+        var circleUserOptions = {
             strokeColor: "0.8",
             strokeOpacity: 0.8,
             strokeWeight: 2,
@@ -78,16 +127,16 @@ if($order){
             center: userLatlng,
             radius: 1000
         };
-        draw_circle = new google.maps.Circle(circleOptions);
+        draw_circle = new google.maps.Circle(circleUserOptions);
 
-        var markerOptions = {
+        var markerUserOptions = {
             map: map,
             position: userLatlng,
             icon: user_marker_icon,
-            title: 'Hello World!',
+            title: 'User',
             animation:  google.maps.Animation.DROP
         };
-        var userMarker = createMarker_map(markerOptions);
+        var userMarker = createMarker_map(markerUserOptions);
 
 <?php
 if(empty($order)){
