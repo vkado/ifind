@@ -24,6 +24,7 @@ class Front extends MY_Controller {
      */
     public function index()
     {
+        define('ENVIRONMENT', 'development');
         echo "FRONT PAGE!!";
     }
 
