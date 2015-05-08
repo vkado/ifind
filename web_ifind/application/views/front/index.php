@@ -41,7 +41,7 @@
               padding-top: 0px;
               text-align: center;
               background: #FFFFFF;
-              background-image: url(./images/img-mainbg-01.png);
+              background-image: url(assets/images/img-mainbg-01.png);
               -webkit-background-size: cover;
               -moz-background-size: cover;
               -o-background-size: cover;
@@ -230,13 +230,13 @@
         <div class="container-fluid no-padding">
             <div class="row-fluid">
                 <div class="col-lg-12 btn-padding">
-                    <a href="#"><img id="btn-tracking" src="./images/btn_myTrackOrder_normal.png" class="clickbtn"></a>
+                    <a href="#"><img id="btn-tracking" src="assets/images/btn_myTrackOrder_normal.png" class="clickbtn"></a>
                 </div>
             </div>
 
             <div class="row-fluid">
                 <div class="col-lg-12 btn-padding">
-                    <a href="#"><img id="btn-customer" src="./images/btn_customerSupport_normal.png" class="clickbtn"></a>
+                    <a href="#"><img id="btn-customer" src="assets/images/btn_customerSupport_normal.png" class="clickbtn"></a>
                 </div>
             </div>
         </div>
@@ -267,24 +267,24 @@
 $("#btn-tracking")
   .mouseup(function() {
     $(this).attr({
-            src: "./images/btn_myTrackOrder_normal.png"
+            src: "assets/images/btn_myTrackOrder_normal.png"
         });  
   })
   .mousedown(function() {
     $(this).attr({
-            src: "./images/btn_myTrackOrder_pressed.png"
+            src: "assets/images/btn_myTrackOrder_pressed.png"
         }); 
   });
 
 $("#btn-customer")
   .mouseup(function() {
     $(this).attr({
-            src: "./images/btn_customerSupport_normal.png"
+            src: "assets/images/btn_customerSupport_normal.png"
         });  
   })
   .mousedown(function() {
     $(this).attr({
-            src: "./images/btn_customerSupport_pressed.png"
+            src: "assets/images/btn_customerSupport_pressed.png"
         }); 
   });
 
