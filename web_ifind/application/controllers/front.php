@@ -16,7 +16,7 @@ class Front extends MY_Controller {
         //     set_cookie('user', $value_of_cookie, '86400');
         // }
 
-        // $this->lang->load("map", "english");
+         $this->lang->load("map", "english");
     }
 
     /**
