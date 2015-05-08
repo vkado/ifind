@@ -6,17 +6,17 @@ class Front extends MY_Controller {
     {
         parent::__construct();
 
-        $this->load->library('googlemaps');
-        $this->load->model('Location_model');
-        $this->load->model('Order_device_model');
+        // $this->load->library('googlemaps');
+        // $this->load->model('Location_model');
+        // $this->load->model('Order_device_model');
 
-        /* check cookie if no cookie will be set for user 1 hour*/
-        if(!$this->input->cookie('user', true)){
-            $value_of_cookie = 'ip:'.$this->input->ip_address().',id:'.get_random_password(4,4);
-            set_cookie('user', $value_of_cookie, '86400');
-        }
+        // /* check cookie if no cookie will be set for user 1 hour*/
+        // if(!$this->input->cookie('user', true)){
+        //     $value_of_cookie = 'ip:'.$this->input->ip_address().',id:'.get_random_password(4,4);
+        //     set_cookie('user', $value_of_cookie, '86400');
+        // }
 
-        $this->lang->load("map", "english");
+        // $this->lang->load("map", "english");
     }
 
     /**
@@ -25,13 +25,11 @@ class Front extends MY_Controller {
     public function index()
     {
         echo "FRONT PAGE!!";
-      
     }
 
     public function index()
     {
         echo "FRONT PAGE!!";
-      
     }
 
     public function searchOrder()
