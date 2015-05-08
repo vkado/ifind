@@ -15,22 +15,6 @@ var express = require('express')
 	, mysql = require('mysql')
 	, fs = require('fs');
 
-//special parser for the activity feed
-function feedParser(req, res, next){
-    //console.log('feedParser!');
-	if(req.originalUrl.substr(0, METHOD_PUBLISH_FEED.length).toLowerCase() != METHOD_PUBLISH_FEED)
-		return next();
-	var data = '';
-	req.setEncoding('utf8');
-	req.on('data', function(chunk){
-		data += chunk;
-	});
-	req.on('end', function(){
-		req.body = data;
-		next();
-	})
-}
-
 var app = express();
 
 app.configure(function(){
@@ -41,7 +25,6 @@ app.configure(function(){
 	//app.use(express.logger('dev'));
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
-	//app.use(feedParser);
 	app.use(app.router);
 	app.use(express.static(path.join(__dirname, 'public')));
 });
@@ -112,7 +95,7 @@ var auth = express.basicAuth(function(user, pass){
 //publish event through post request
 app.post(METHOD_PUBLISH_FEED, function(req, res){
 
-    updateLocation(req.body);
+    var res = updateLocation(req.body);
 
     io.sockets.in(req.body.order_id).emit('message', req.body);
 	res.send(200);
