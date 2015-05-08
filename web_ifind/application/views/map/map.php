@@ -130,7 +130,7 @@ if($order){
             fillOpacity: 0.3,
             map: map,
             center: userLatlng,
-            radius: 1000
+            radius: 100
         };
         draw_circle = new google.maps.Circle(circleUserOptions);
 
