@@ -79,7 +79,8 @@ class ApiTrack extends MY_Controller {
     }
 
     public function getOrderInfo($order_id){
-        $query = $this->db->get('order_location');
+        // $query = $this->db->get('order_location');
+        $query = $this->db->get_where('order_location', array('order_id' => $order_id));
         // print_r($query->result());
         return $query->result();
     }
