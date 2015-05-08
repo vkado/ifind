@@ -31,16 +31,35 @@ class Front extends MY_Controller {
         $this->render_page('template');
     }
 
-    public function searchOrder()
-    {
-        echo "searchOrder PAGE!!";
-      
-    }
-
     public function showOrder()
     {
-        echo "showOrder PAGE!!";
-      
+        $order_id = $_POST['order'];
+
+        // create curl resource
+        $ch = curl_init();
+
+        // set url
+        curl_setopt($ch, CURLOPT_URL, "http://52.74.187.146/ApiTrack/getPercent/".$order_id);
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        // $output contains the output string
+        $output = curl_exec($ch);
+
+        // close curl resource to free up system resources
+        curl_close($ch);
+
+        $output = json_decode($output,true);
+
+        $this->data['main'] = 'front/showorder';
+        $this->data['order_id'] = $order_id;
+        $this->data['percent'] = (!empty($output['percent']))?$output['percent']:0;
+        $this->data['order_date'] = (!empty($output['order_date']))?$output['order_date']:'-';
+        $this->data['estimated_delivery'] = (!empty($output['duration']))?$output['duration']:'-';
+
+        $this->load->vars($this->data);
+        $this->render_page('template');
     }
 
     public function showMap($order)

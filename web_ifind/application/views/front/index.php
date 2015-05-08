@@ -11,7 +11,7 @@
                 ?>
                 <div class="input-group input-group-sm">
                     <div class="icon-addon addon-sm">
-                        <input type="text" placeholder="Enter your order number" class="form-control" id="order">
+                        <input type="text" placeholder="Enter your order number" class="form-control" name="order">
                         <label for="email" class="glyphicon glyphicon-search" rel="tooltip" title="email"></label>
                     </div>
                     <span class="input-group-btn">
