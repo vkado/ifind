@@ -96,7 +96,7 @@ var auth = express.basicAuth(function(user, pass){
 //publish event through post request
 app.post(METHOD_PUBLISH_FEED, function(req, res){
 
-    var res = updateLocation(req.body);
+    updateLocation(req.body);
 
     io.sockets.in(req.body.order_id).emit('message', req.body);
 	res.send(200);
