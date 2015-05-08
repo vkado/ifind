@@ -119,7 +119,7 @@ if($order_id){
                     </li>
                     <li class="item-status col-3">
                         <p class="text-status">Delivery status</p>
-                        <span class="delivery-status">Shipped</span>
+                        <span class="delivery-status">Shipping</span>
                     </li>
                     <li class="item-status col-1">
                         <p class="text-status">Qty. (items)</p>
