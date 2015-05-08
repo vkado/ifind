@@ -26,7 +26,8 @@ class Front extends MY_Controller {
     public function index()
     {
         // echo phpinfo();
-        echo "FRONT PAGE!!";
+        // echo "FRONT PAGE!!";
+        $this->load->view('font/index.php');
     }
 
     public function searchOrder()
