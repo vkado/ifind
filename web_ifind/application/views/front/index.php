@@ -6,15 +6,21 @@
 
 
             <div class="form-group">
+                <?php
+                echo form_open('showorder');
+                ?>
                 <div class="input-group input-group-sm">
                     <div class="icon-addon addon-sm">
                         <input type="text" placeholder="Enter your order number" class="form-control" id="order">
                         <label for="email" class="glyphicon glyphicon-search" rel="tooltip" title="email"></label>
                     </div>
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" style="margin-left: 16px; width: 63px; background-color: #25589B; color: #FFF;">Find</button>
+                        <button class="btn btn-default" type="submit" style="margin-left: 16px; width: 63px; background-color: #25589B; color: #FFF;">Find</button>
                     </span>
                 </div>
+                <?php
+                echo form_close();
+                ?>
             </div>
 
 
