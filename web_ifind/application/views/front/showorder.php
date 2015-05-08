@@ -63,7 +63,12 @@ if($order_id){
                 type: "GET",
             }).done(function(respon) {
                 console.log(respon);
-                
+                // {"percent":38.14,"order_date":"2015-05-08 13:00:00","duration":842}
+
+                // respon.json.
+                var obj = JSON.parse(respon);
+
+                $("#percent-display").html(obj.percent+'<i>%</i>');
             });
 
         });
@@ -131,7 +136,7 @@ if($order_id){
                             </li>
                         </ul>
                         <div class="inner" style="width: 100%">
-                            <div class="percent-amount">
+                            <div class="percent-amount" id="percent-display">
                                 <?php echo $percent;?><i>%</i>
                             </div>
                         </div>
