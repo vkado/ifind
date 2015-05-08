@@ -236,7 +236,11 @@
 
             <div class="row-fluid">
                 <div class="col-lg-12 btn-padding">
-                    <a href="#"><img id="btn-customer" src="assets/images/btn_customerSupport_normal.png" class="clickbtn"></a>
+                    <script type="text/javascript"> 
+(function(d, src, c) { var t=d.scripts[d.scripts.length - 1],s=d.createElement('script');s.id='la_x2s6df8d';s.async=true;s.src=src;s.onload=s.onreadystatechange=function(){var rs=this.readyState;if(rs&&(rs!='complete')&&(rs!='loaded')){return;}c(this);};t.parentElement.insertBefore(s,t.nextSibling);})(document, 
+'//support.itruemart.com/scripts/track.js', 
+function(e){ LiveAgent.createButton('db2394d3', e); }); 
+</script>
                 </div>
             </div>
         </div>
