@@ -61,10 +61,10 @@ class ApiTrack extends MY_Controller {
         $this->db->order_by("id", "desc"); 
         $this->db->limit(1);
 
-        $query = $this->db->get_where('locationx', array('order_id' => $order_id));
+        $query = $this->db->get_where('location', array('order_id' => $order_id));
         $nowinfo = $query->result();
 
-        print_r($nowinfo );
+        print_r($nowinfo);
 
         $order_info = $this->getOrderInfo($order_id);
         print_r($order_info );
