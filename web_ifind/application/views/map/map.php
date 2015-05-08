@@ -87,8 +87,7 @@ if($order){
                     map: map,
                     position: carNewLatLng,
                     icon: marker_icon,
-                    title: "iFind",
-                    animation:  google.maps.Animation.DROP
+                    title: "iFind"
                 });
             }
 

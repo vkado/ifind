@@ -57,21 +57,58 @@ function updateLocation(data)
 
     var point = data.lat+","+data.long;
 
-    var sql = "INSERT INTO location (order_id, lat, `long`, point, date_added) " +
-    "VALUES ("+sqlcon.escape(data.order_id)+", "+sqlcon.escape(data.lat)+", "+sqlcon.escape(data.long)+", "+sqlcon.escape(point)+", NOW())";
+    var sql1 = "SELECT * FROM order_location WHERE order_id = "+sqlcon.escape(data.order_id)+";";
 
-	sqlcon.query(sql, function(err, rows){
-		if(err){
-			console.log(err);
-			return;
-		}
-		console.log(rows);
-		if(rows.length < 1)
-		{
-			return;
-		}
-		console.log('order valid: ' + data.order_id);
-	});
+    sqlcon.query(sql1, function(err, rows){
+        if(err){
+            console.log(err);
+            return;
+        }
+        console.log(rows);
+        if(rows.length < 1)
+        {
+            var destination = "";
+            if(data.order_id == 10000){
+                destination = "13.764456328912916,100.56825885153548";
+            }else if(data.order_id == 20000){
+                destination = "13.765770019060936,100.56955529028525";
+            }else{
+                destination = "13.764456328912916,100.56825885153548";
+            }
+
+            var sql2 = "INSERT INTO order_location (order_id, origin, destination, start_at) " +
+                "VALUES ("+sqlcon.escape(data.order_id)+", "+sqlcon.escape(point)+", "+sqlcon.escape(destination)+", NOW());" +
+                "INSERT INTO location (order_id, lat, `long`, point, date_added) " +
+                "VALUES ("+sqlcon.escape(data.order_id)+", "+sqlcon.escape(data.lat)+", "+sqlcon.escape(data.long)+", "+sqlcon.escape(point)+", NOW())";
+
+            sqlcon.query(sql2, function(err, rows){
+                if(err){
+                    console.log(err);
+                    return;
+                }
+                console.log(rows);
+                if(rows.length < 1)
+                {
+                    return;
+                }
+            });
+        }else{
+            var sql2 = "INSERT INTO location (order_id, lat, `long`, point, date_added) " +
+                "VALUES ("+sqlcon.escape(data.order_id)+", "+sqlcon.escape(data.lat)+", "+sqlcon.escape(data.long)+", "+sqlcon.escape(point)+", NOW())";
+
+            sqlcon.query(sql2, function(err, rows){
+                if(err){
+                    console.log(err);
+                    return;
+                }
+                console.log(rows);
+                if(rows.length < 1)
+                {
+                    return;
+                }
+            });
+        }
+    });
 }
 
 io.sockets.on('connection', function(socket){
