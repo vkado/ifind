@@ -11,6 +11,12 @@
 
     <title>i F i n d !!</title>
 
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/styles.css" />
 
     <script type="text/javascript">
