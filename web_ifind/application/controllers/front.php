@@ -48,7 +48,7 @@ class Front extends MY_Controller {
     {
         echo "showMap PAGE!!";
       
-    }
+    
 
 }
 
