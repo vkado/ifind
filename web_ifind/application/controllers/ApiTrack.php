@@ -83,11 +83,11 @@ class ApiTrack extends MY_Controller {
         $data['order_date'] = $order_info[0]->start_at;
         $data['duration'] = $base_distance['duration'];
 
-        print_r($data);
+        print_r(json_encode($data));
 
         // $arr = array('percent' => , (($current_distance['distance'])/$base_distance['distance'])*100);
         // print_r(($current_distance['distance'])/$base_distance['distance'])*100);
-        // return $query->result();
+        return json_encode($data);
     }
 
     public function getOrderInfo($order_id){
