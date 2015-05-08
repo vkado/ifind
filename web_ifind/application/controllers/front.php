@@ -25,6 +25,7 @@ class Front extends MY_Controller {
 
     public function index()
     {
+        echo phpinfo();
         echo "FRONT PAGE!!";
     }
 
