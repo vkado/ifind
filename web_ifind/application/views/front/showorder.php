@@ -84,16 +84,22 @@ if($order_id){
             <div class="col-xs-12">
                 <div class="form-horizontal">
                     <div class="form-group">
+                        <?php
+                        echo form_open('showorder');
+                        ?>
                         <div class="col-xs-9 form-group-search">
                             <span class="glyphicon glyphicon-search"></span>
-                            <input type="text" class="form-control input-search"/>
+                            <input type="text" class="form-control input-search" name="order"/>
                         </div>
                         <div class="col-xs-3">
-                            <button class="btn-search">
+
+                            <button class="btn-search" type="submit" >
                                 Find
                             </button>
                         </div>
-
+                        <?php
+                        echo form_close();
+                        ?>
                     </div>
                 </div>
             </div>
