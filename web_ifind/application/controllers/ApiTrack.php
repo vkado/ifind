@@ -64,20 +64,21 @@ class ApiTrack extends MY_Controller {
         $query = $this->db->get_where('location', array('order_id' => $order_id));
         $nowinfo = $query->result();
 
-        print_r($nowinfo );
+        print_r($nowinfo);
 
         $order_info = $this->getOrderInfo($order_id);
+        print_r($order_info);
 
 
         $base_distance = $this->getDistanct($order_info[0]->origin,$order_info[0]->destination);
         $current_distance = $this->getDistanct($nowinfo[0]->now,$order_info[0]->destination);
-        print_r('Base<br>');
-        print_r($base_distance['distance']);
-        print_r('<br>Now<br>');
-        print_r($current_distance['distance']);
-        print_r('<br> ');
+        // print_r('Base<br>');
+        // print_r($base_distance['distance']);
+        // print_r('<br>Now<br>');
+        // print_r($current_distance['distance']);
+        // print_r('<br> ');
 
-        print_r((($base_distance['distance']-$current_distance['distance'])/$base_distance['distance'])*100);
+        // print_r((($base_distance['distance']-$current_distance['distance'])/$base_distance['distance'])*100);
         return $query->result();
     }
 
