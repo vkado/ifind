@@ -11,23 +11,11 @@
 
     <title>i F i n d !!</title>
 
-    <!-- Latest compiled and minified CSS -->
-<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"-->
-
-<!-- Optional theme -->
-<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"-->
-
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/styles.css" />
 
     <script type="text/javascript">
         var baseUrlPath = "<?php echo base_url();?><?php echo (index_page() == '')? '' : index_page()."/" ?>";
     </script>
-
-    <!-- Bootstrap Core CSS -->
-    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
-
-    <!-- Custom CSS -->
-    <!-- <link href="css/scrolling-nav.css" rel="stylesheet"> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,17 +37,6 @@
             <div class="row-fluid">
                 <div class="col-xs-12 mid">
 
-<!--                     <div class="form-group">
-                        <div class="icon-addon addon-md">
-                            <input type="text" placeholder="Email" class="form-control" id="email">
-                            <label for="email" class="glyphicon glyphicon-search" rel="tooltip" title="email"></label>
-
-                        </div>
-                        <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                    </div> -->
-
 
             <div class="form-group">
                 <div class="input-group input-group-sm">
@@ -72,7 +49,6 @@
                     </span>
                 </div>
             </div>
-
 
 
                 </div>
@@ -110,13 +86,7 @@ function(e){ LiveAgent.createButton('db2394d3', e); });
             </div>
         </div>
     </footer>
-
-
-    <!-- jQuery 
-    <script src="js/jquery.js"></script>-->
-
-    <!-- Bootstrap Core JavaScript 
-    <script src="js/bootstrap.min.js"></script>-->
+    
 
     <script src="<?php echo base_url();?>assets/js/script.min.js"></script>
 
