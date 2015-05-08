@@ -112,9 +112,14 @@ class Front extends MY_Controller {
                 array("featureType"=>"poi.business", "elementType"=>"labels", "stylers"=>array(array("visibility"=>"off")))
             ))
         );
+
+        $config['streetViewPanControl'] = false;
         $config['stylesAsMapTypes'] = true;
         $config['stylesAsMapTypesDefault'] = "iFind";
         $config['mapTypeControlStyle'] = "DROPDOWN_MENU";
+        $config['mapTypeControlPosition'] = "RIGHT_BOTTOM";
+        $config['zoomControlStyle'] = "SMALL";
+        $config['zoomControlPosition'] = "LEFT_BOTTOM";
         $this->googlemaps->initialize($config);
 
         if($locations){

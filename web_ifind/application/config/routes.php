@@ -40,7 +40,7 @@
 
 $route['default_controller'] = "front";
 $route['tracking'] = 'map/tracking';
-$route['showmap'] = 'front/showMap';
+$route['showmap/(:any)'] = 'front/showMap/$1';
 $route['showorder'] = 'front/showOrder';
 
 $route['404_override'] = '';

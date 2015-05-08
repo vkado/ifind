@@ -96,6 +96,7 @@ if($order_id){
         <div class="box-status">
             <h3 class="title-name">Recent</h3>
 
+            <a href="<?php echo base_url();?><?php echo (index_page() == '')? '' : index_page()."/" ?>showmap/<?php echo $order_id;?>">
             <div class="status-information">
                 <ul class="list-unstyled list-status">
                     <li class="item-status col-1">
@@ -138,6 +139,7 @@ if($order_id){
                     </div>
                 </div>
             </div>
+            </a>
         </div>
         <div class="box-status">
             <h3 class="title-name">History</h3>

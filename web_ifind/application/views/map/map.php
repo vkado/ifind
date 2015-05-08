@@ -1,19 +1,24 @@
-<div>
-    <?php
-    echo form_open('tracking#order');
-    ?>
-    <div class="form-group form-group-lg">
-        <div class="col-md-6">
-            <input type="text" class="form-control" name="order" id="order" value="<?php echo $order; ?>" placeholder="<?php echo $this->lang->line('search_order_id'); ?>">
+<link rel="stylesheet" href="<?php echo base_url();?>assets/css/ifinder.css"/>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="shipped-detail">
+                <ul class="list-unstyled list-status">
+                    <li class="item-status col-1 col-xs-4">
+                        <p class="text-status">Shipped from.</p>
+                        <span class="order-no">AIA</span>
+                    </li>
+                    <li class="item-status col-2 col-xs-4">
+                        <p class="text-status">Destination</p>
+                        <span class="order-no">Espanade Ratchada</span>
+                    </li>
+                    <li class="item-status col-3 col-xs-4">
+                        <img src="<?php echo base_url();?>assets/images/btn-calltopickup_normal.png" alt=""/>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-
-    <div class="col-md-6">
-        <?php echo anchor('', $this->lang->line('search'), array('class' => 'btn btn-primary btn-lg btn-block')); ?>
-    </div>
-    <?php
-    echo form_close();
-    ?>
 </div>
 
 <div id="map-info">
