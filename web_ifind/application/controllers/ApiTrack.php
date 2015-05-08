@@ -72,13 +72,15 @@ class ApiTrack extends MY_Controller {
 
         $base_distance = $this->getDistanct($order_info[0]->origin,$order_info[0]->destination);
         $current_distance = $this->getDistanct($nowinfo[0]->point,$order_info[0]->destination);
-        print_r('Base<br>');
-        print_r($base_distance['distance']);
-        print_r('<br>Now<br>');
-        print_r($current_distance['distance']);
-        print_r('<br> ');
+        // print_r('Base<br>');
+        // print_r($base_distance['distance']);
+        // print_r('<br>Now<br>');
+        // print_r($current_distance['distance']);
+        // print_r('<br> ');
 
-        print_r((($current_distance['distance'])/$base_distance['distance'])*100);
+        // print_r((($current_distance['distance'])/$base_distance['distance'])*100);
+        $data['percent'] = ((($current_distance['distance'])/$base_distance['distance'])*100);
+        $data['order_date'] = $order_info[0]->start_at;
         // $arr = array('percent' => , (($current_distance['distance'])/$base_distance['distance'])*100);
         // print_r(($current_distance['distance'])/$base_distance['distance'])*100);
         // return $query->result();
@@ -101,7 +103,7 @@ class ApiTrack extends MY_Controller {
         $data['duration'] = $obj->rows[0]->elements[0]->duration->value;
         $data['destination_addresses'] = $obj->destination_addresses[0];
         $data['origin_addresses'] = $obj->origin_addresses[0];
-// print_r($data);
+print_r($data);
 // print_r('<br>');
 // print_r('<br>');
         return $data;
