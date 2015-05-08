@@ -27,8 +27,7 @@ if($order){
 ?>
     <script type="text/javascript">
 
-        var userMarker = {};
-        var carMarker = {};
+        var carMarker = [];
 
         var urlHost = '<?php echo NODE_URL; ?>';
 
@@ -41,22 +40,28 @@ if($order){
 
         socket.on('message', function(data){
 
-            var marker_count = markers_map.length - 1;
+            if(carMarker.length < 1){
 
-            for (var i = 0; i < markers_map.length; i++) {
-                if(map.getBounds().contains(markers_map[marker_count].getPosition())){
-                    if(markers_map[i].title == 'iFind'){
-                        carMarker = markers_map[i];
+                var marker_count = markers_map.length - 1;
+
+                for (var i = 0; i < markers_map.length; i++) {
+                    if(map.getBounds().contains(markers_map[marker_count].getPosition())){
+                        console.log(markers_map[i]);
+                        if(markers_map[i].title == 'iFind'){
+                            carMarker = markers_map[i];
+                        }
                     }
-                    //userMarker = markers_map[marker_count];
-                    //carMarker = markers_map[0];
                 }
             }
+
 
             if(carMarker){
 
                 var carLastLatLng = new google.maps.LatLng(carMarker.position.A, carMarker.position.F);
                 var carNewLatLng = new google.maps.LatLng(data.lat, data.long);
+
+                carMarker.position.A = data.lat;
+                carMarker.position.F = data.long;
 
                 var runnningPlanCoordinates = [
                     carLastLatLng,
