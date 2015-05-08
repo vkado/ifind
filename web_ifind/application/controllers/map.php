@@ -54,10 +54,15 @@ class Map extends MY_Controller {
 
         $location_data = $this->array_value_recursive('point', $locations);
 
+        if(is_array($location_data)){
+            $location_data_first_point = $location_data[0];
+        }else{
+            $location_data_first_point = $location_data;
+        }
         $this->data['order'] = $order;
-        $this->data['point'] = $location_data[0];
+        $this->data['point'] = $location_data_first_point;
 
-        $latlong = explode(',', $location_data[0]);
+        $latlong = explode(',', $location_data_first_point);
 
         $this->data['lat'] = $latlong[0];
         $this->data['long'] = $latlong[1];
