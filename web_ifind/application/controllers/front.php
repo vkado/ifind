@@ -1,14 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-require APPPATH . '/libraries/MY_Controller.php';
+// require APPPATH . '/libraries/MY_Controller.php';
 class Front extends MY_Controller {
 
     public function __construct()
     {
         parent::__construct();
 
-        // $this->load->library('googlemaps');
-        // $this->load->model('Location_model');
-        // $this->load->model('Order_device_model');
+        $this->load->library('googlemaps');
+        $this->load->model('Location_model');
+        $this->load->model('Order_device_model');
 
         // /* check cookie if no cookie will be set for user 1 hour*/
         // if(!$this->input->cookie('user', true)){
