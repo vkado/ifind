@@ -78,7 +78,7 @@ class ApiTrack extends MY_Controller {
         print_r($current_distance['distance']);
         print_r('<br> ');
 
-        print_r((($base_distance['distance']-$current_distance['distance'])/$base_distance['distance'])*100);
+        print_r((($current_distance['distance'])/$base_distance['distance'])*100);
         // $arr = array('percent' => , (($current_distance['distance'])/$base_distance['distance'])*100);
         // print_r(($current_distance['distance'])/$base_distance['distance'])*100);
         // return $query->result();
