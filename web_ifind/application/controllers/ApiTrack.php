@@ -70,7 +70,7 @@ class ApiTrack extends MY_Controller {
         print_r($order_info );
 
         $base_distance = $this->getDistanct($order_info[0]->origin,$order_info[0]->destination);
-        $current_distance = $this->getDistanct($nowinfo[0]->now,$order_info[0]->destination);
+        $current_distance = $this->getDistanct($nowinfo[0]->point,$order_info[0]->destination);
         print_r('Base<br>');
         print_r($base_distance['distance']);
         print_r('<br>Now<br>');
