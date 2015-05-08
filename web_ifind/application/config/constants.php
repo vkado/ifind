@@ -36,6 +36,9 @@ define('FOPEN_READ_WRITE_CREATE',				'a+b');
 define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
+//define('NODE_URL',      'http://localhost:3000');
+define('NODE_URL',      'http://52.74.187.146:3000');
+
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

@@ -12,7 +12,7 @@ var express = require('express')
 	, path = require('path')
 	, io = require('socket.io')
 	, redis = require('redis')
-	//, mysql = require('mysql')
+	, mysql = require('mysql')
 	, fs = require('fs');
 
 //special parser for the activity feed
@@ -41,7 +41,7 @@ app.configure(function(){
 	//app.use(express.logger('dev'));
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
-	app.use(feedParser);
+	//app.use(feedParser);
 	app.use(app.router);
 	app.use(express.static(path.join(__dirname, 'public')));
 });
@@ -60,46 +60,33 @@ server.listen(app.get('port'), function(){
 	console.log("Express server listening on port " + app.get('port'));
 });
 
-/*var sqlcon = mysql.createConnection({
+var sqlcon = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
   database : 'ifind'
 });
-sqlcon.connect();*/
+sqlcon.connect();
 
-function updateLocation(channel, callback)
+function updateLocation(data)
 {
-	if(!channel)
-	{
-		callback('channel is not invalid', channel);
-		return;
-	}
-	if(channel.slice(0, 'http'.length) == 'http')
-	{
-		callback('channel cannot begins with [http]', channel);
-		return;
-	}
-	if(channel.slice(0, 'www'.length) == 'www')
-	{
-		callback('channel cannot begins with [www]', channel);
-		return;
-	}
-	var sql = 'SELECT device_id FROM locaiton WHERE device_id = ' + sqlcon.escape(channel);
+
+    var point = data.lat+","+data.long;
+
+    var sql = "INSERT INTO location (order_id, lat, `long`, point, date_added) " +
+    "VALUES ("+sqlcon.escape(data.order_id)+", "+sqlcon.escape(data.lat)+", "+sqlcon.escape(data.long)+", "+sqlcon.escape(point)+", NOW())";
+
 	sqlcon.query(sql, function(err, rows){
 		if(err){
 			console.log(err);
-			callback(err);
 			return;
 		}
 		console.log(rows);
 		if(rows.length < 1)
 		{
-			callback('channel does not exist', channel);
 			return;
 		}
-		console.log('domain valid: ' + rows[0].domain_name);
-		callback(null, channel)
+		console.log('order valid: ' + data.order_id);
 	});
 }
 
@@ -123,10 +110,10 @@ var auth = express.basicAuth(function(user, pass){
 });
 
 //publish event through post request
-app.post(METHOD_PUBLISH_FEED, auth, function(req, res){
+app.post(METHOD_PUBLISH_FEED, function(req, res){
 
-    console.log(req.body);
+    updateLocation(req.body);
 
-    io.sockets.in(10001).emit('message', 'yeah');
+    io.sockets.in(req.body.order_id).emit('message', req.body);
 	res.send(200);
 });

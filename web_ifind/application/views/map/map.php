@@ -27,7 +27,7 @@ if($order){
 ?>
     <script type="text/javascript">
 
-        var urlHost = 'http://localhost:3000';
+        var urlHost = '<?php echo NODE_URL; ?>';
 
         var socket = io.connect(urlHost);
         socket.on('connect', function(){
