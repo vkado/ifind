@@ -93,6 +93,8 @@ class ApiTrack extends MY_Controller {
         $json = file_get_contents($url);
         $obj = json_decode($json);
 
+        print_r($url);
+
         // print_r($obj->rows[0]->elements[0]->distance->value);
         $data['distance'] = $obj->rows[0]->elements[0]->distance->value;
         $data['duration'] = $obj->rows[0]->elements[0]->duration->value;
