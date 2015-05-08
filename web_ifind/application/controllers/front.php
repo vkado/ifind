@@ -33,8 +33,12 @@ class Front extends MY_Controller {
 
     public function showOrder()
     {
-        $order_id = $_POST['order'];
-
+        
+        if(empty($_POST['order'])){
+            redirect(base_url());        
+        }else{
+            $order_id = $_POST['order'];
+        }
         // create curl resource
         $ch = curl_init();
 
