@@ -38,8 +38,8 @@
 |
 */
 
-$route['default_controller'] = "map";
-$route['tracking'] = 'map/tracking';
+$route['default_controller'] = "front";
+$route['tracking'] = 'front/tracking';
 
 $route['404_override'] = '';
 
