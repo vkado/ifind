@@ -104,8 +104,7 @@ class ApiTrack extends MY_Controller {
 
         // print_r($obj->rows[0]->elements[0]->distance->value);
         $data['distance'] = $obj->rows[0]->elements[0]->distance->value;
-        // $data['duration'] = $obj->rows[0]->elements[0]->duration->value;
-        $data['duration'] = $obj->rows[0]->elements[0]->duration->text;
+        $data['duration'] = $obj->rows[0]->elements[0]->duration->value;
         $data['destination_addresses'] = $obj->destination_addresses[0];
         $data['origin_addresses'] = $obj->origin_addresses[0];
 // print_r('<br>');
