@@ -9,6 +9,7 @@ class Location_model extends CI_Model
      * @param    $order_id need to get location
      * @return array
      */
+
     public function getLocationFromOrder($order_id) {
         $this->db->select('point');
         $this->db->where('order_id',db_clean($order_id), 128);
