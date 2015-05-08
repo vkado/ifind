@@ -9,13 +9,25 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Scrolling Nav - Start Bootstrap Template</title>
+    <title>i F i n d !!</title>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/styles.css" />
+
+    <script type="text/javascript">
+        var baseUrlPath = "<?php echo base_url();?><?php echo (index_page() == '')? '' : index_page()."/" ?>";
+    </script>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- Custom CSS -->
-    <link href="css/scrolling-nav.css" rel="stylesheet">
+    <!-- <link href="css/scrolling-nav.css" rel="stylesheet"> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,7 +41,7 @@
               padding-top: 0px;
               text-align: center;
               background: #FFFFFF;
-              background-image: url(./images/img-mainbg-01.png);
+              background-image: url(assets/images/img-mainbg-01.png);
               -webkit-background-size: cover;
               -moz-background-size: cover;
               -o-background-size: cover;
@@ -218,13 +230,13 @@
         <div class="container-fluid no-padding">
             <div class="row-fluid">
                 <div class="col-lg-12 btn-padding">
-                    <a href="#"><img id="btn-tracking" src="./images/btn_myTrackOrder_normal.png" class="clickbtn"></a>
+                    <a href="#"><img id="btn-tracking" src="assets/images/btn_myTrackOrder_normal.png" class="clickbtn"></a>
                 </div>
             </div>
 
             <div class="row-fluid">
                 <div class="col-lg-12 btn-padding">
-                    <a href="#"><img id="btn-customer" src="./images/btn_customerSupport_normal.png" class="clickbtn"></a>
+                    <a href="#"><img id="btn-customer" src="assets/images/btn_customerSupport_normal.png" class="clickbtn"></a>
                 </div>
             </div>
         </div>
@@ -241,11 +253,13 @@
     </footer>
 
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <!-- jQuery 
+    <script src="js/jquery.js"></script>-->
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core JavaScript 
+    <script src="js/bootstrap.min.js"></script>-->
+
+    <script src="assets/js/script.min.js"></script>
 
 
 
@@ -253,24 +267,24 @@
 $("#btn-tracking")
   .mouseup(function() {
     $(this).attr({
-            src: "./images/btn_myTrackOrder_normal.png"
+            src: "assets/images/btn_myTrackOrder_normal.png"
         });  
   })
   .mousedown(function() {
     $(this).attr({
-            src: "./images/btn_myTrackOrder_pressed.png"
+            src: "assets/images/btn_myTrackOrder_pressed.png"
         }); 
   });
 
 $("#btn-customer")
   .mouseup(function() {
     $(this).attr({
-            src: "./images/btn_customerSupport_normal.png"
+            src: "assets/images/btn_customerSupport_normal.png"
         });  
   })
   .mousedown(function() {
     $(this).attr({
-            src: "./images/btn_customerSupport_pressed.png"
+            src: "assets/images/btn_customerSupport_pressed.png"
         }); 
   });
 
