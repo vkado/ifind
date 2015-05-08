@@ -64,13 +64,13 @@ class ApiTrack extends MY_Controller {
         $query = $this->db->get_where('location', array('order_id' => $order_id));
         $nowinfo = $query->result();
 
-        print_r($nowinfo);
+        print_r($nowinfo );
 
         $order_info = $this->getOrderInfo($order_id);
-        print_r($order_info );
+
 
         $base_distance = $this->getDistanct($order_info[0]->origin,$order_info[0]->destination);
-        $current_distance = $this->getDistanct($nowinfo[0]->point,$order_info[0]->destination);
+        $current_distance = $this->getDistanct($nowinfo[0]->now,$order_info[0]->destination);
         print_r('Base<br>');
         print_r($base_distance['distance']);
         print_r('<br>Now<br>');
@@ -92,8 +92,6 @@ class ApiTrack extends MY_Controller {
         $url = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins='.$from.'&destinations='.$to.'&language=th-TH&key=AIzaSyD1UbY_EQxk37YTIb8i4XgoN4RKUy15rC0';
         $json = file_get_contents($url);
         $obj = json_decode($json);
-
-        print_r($url);
 
         // print_r($obj->rows[0]->elements[0]->distance->value);
         $data['distance'] = $obj->rows[0]->elements[0]->distance->value;
