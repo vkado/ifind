@@ -1,4 +1,5 @@
 var METHOD_PUBLISH_FEED = '/location';
+var METHOD_ONE_KILO_BACK = '/onekilo';
 
 /**
  * Module dependencies.
@@ -99,4 +100,11 @@ app.post(METHOD_PUBLISH_FEED, function(req, res){
 
     io.sockets.in(req.body.order_id).emit('message', req.body);
 	res.send(200);
+});
+
+app.post(METHOD_ONE_KILO_BACK, function(req, res){
+
+    console.log(reqbody);
+
+    res.send(200);
 });
