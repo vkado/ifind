@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-// require APPPATH . '/libraries/MY_Controller.php';
+require APPPATH . '/libraries/MY_Controller.php';
 class Front extends MY_Controller {
 
     public function __construct()
@@ -22,11 +22,6 @@ class Front extends MY_Controller {
     /**
      * Index Page for this controller.
      */
-    public function index()
-    {
-        define('ENVIRONMENT', 'development');
-        echo "FRONT PAGE!!";
-    }
 
     public function index()
     {
