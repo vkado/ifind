@@ -25,7 +25,7 @@ class ApiTrack extends MY_Controller {
      */
     public function index()
     {
-        
+        echo "API Welcome !!";
     }
 
     public function getHistory($order_id)
@@ -57,11 +57,11 @@ class ApiTrack extends MY_Controller {
 
     public function getPercent($order_id){
         // Get last location
-        $last_location = $this->db->select('`now`');
+        $last_location = $this->db->select('*');
         $this->db->order_by("id", "desc"); 
         $this->db->limit(1);
 
-        $query = $this->db->get('trackhistory');
+        $query = $this->db->get('location');
         $nowinfo = $query->result();
 
         $order_info = $this->getOrderInfo($order_id);
@@ -72,7 +72,7 @@ class ApiTrack extends MY_Controller {
         print_r($base_distance['distance']);
         print_r('<br>Now<br>');
         print_r($current_distance['distance']);
-        print_r('<br>');
+        print_r('<br> ');
 
         print_r((($base_distance['distance']-$current_distance['distance'])/$base_distance['distance'])*100);
         return $query->result();
