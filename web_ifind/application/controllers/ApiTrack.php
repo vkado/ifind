@@ -61,24 +61,33 @@ class ApiTrack extends MY_Controller {
         $this->db->order_by("id", "desc"); 
         $this->db->limit(1);
 
-        $query = $this->db->get_where('locationx', array('order_id' => $order_id));
+        $query = $this->db->get_where('location', array('order_id' => $order_id));
         $nowinfo = $query->result();
 
-        print_r($nowinfo );
+        // print_r($nowinfo);
 
         $order_info = $this->getOrderInfo($order_id);
-        print_r($order_info );
+        // print_r($order_info );
+
 
         $base_distance = $this->getDistanct($order_info[0]->origin,$order_info[0]->destination);
         $current_distance = $this->getDistanct($nowinfo[0]->point,$order_info[0]->destination);
-        print_r('Base<br>');
-        print_r($base_distance['distance']);
-        print_r('<br>Now<br>');
-        print_r($current_distance['distance']);
-        print_r('<br> ');
+        // print_r('Base<br>');
+        // print_r($base_distance['distance']);
+        // print_r('<br>Now<br>');
+        // print_r($current_distance['distance']);
+        // print_r('<br> ');
 
-        print_r((($base_distance['distance']-$current_distance['distance'])/$base_distance['distance'])*100);
-        return $query->result();
+        // print_r((($current_distance['distance'])/$base_distance['distance'])*100);
+        $data['percent'] = round(((($current_distance['distance'])/$base_distance['distance'])*100), 2);
+        $data['order_date'] = $order_info[0]->start_at;
+        $data['duration'] = $base_distance['duration'];
+
+        print_r(json_encode($data));
+
+        // $arr = array('percent' => , (($current_distance['distance'])/$base_distance['distance'])*100);
+        // print_r(($current_distance['distance'])/$base_distance['distance'])*100);
+        return json_encode($data);
     }
 
     public function getOrderInfo($order_id){
@@ -93,16 +102,13 @@ class ApiTrack extends MY_Controller {
         $json = file_get_contents($url);
         $obj = json_decode($json);
 
-        print_r($url);
-
         // print_r($obj->rows[0]->elements[0]->distance->value);
         $data['distance'] = $obj->rows[0]->elements[0]->distance->value;
         $data['duration'] = $obj->rows[0]->elements[0]->duration->value;
         $data['destination_addresses'] = $obj->destination_addresses[0];
         $data['origin_addresses'] = $obj->origin_addresses[0];
-print_r($data);
-print_r('<br>');
-print_r('<br>');
+// print_r('<br>');
+// print_r('<br>');
         return $data;
 
         
