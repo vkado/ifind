@@ -145,7 +145,7 @@ module.exports = function(grunt) {
     grunt.registerTask('build', [
         'less:dist',
         'concat',
-        'uglify'
+        //'uglify'
     ]);
 
 };
