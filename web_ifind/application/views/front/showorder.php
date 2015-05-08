@@ -61,8 +61,8 @@ if($order_id){
             $.ajax({
                 url: "http://52.74.187.146/ApiTrack/getPercent/"+data.order_id,
                 type: "GET",
-            }).done(function(data) {
-                console.log(data.order_id);
+            }).done(function(respon) {
+                console.log(respon);
                 
             });
 

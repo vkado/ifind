@@ -56,7 +56,7 @@ class Front extends MY_Controller {
         $this->data['order_id'] = $order_id;
         $this->data['percent'] = (!empty($output['percent']))?$output['percent']:0;
         $this->data['order_date'] = (!empty($output['order_date']))?$output['order_date']:'-';
-        $this->data['estimated_delivery'] = (!empty($output['estimated_delivery']))?$output['order_date']:'-';
+        $this->data['estimated_delivery'] = (!empty($output['duration']))?$output['duration']:'-';
 
         $this->load->vars($this->data);
         $this->render_page('template');
