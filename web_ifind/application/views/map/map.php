@@ -85,8 +85,9 @@ if($order){
                 marker_0.setMap(null);
 
                 var marker_icon = {
-                    url: "http://image.weevirus.com/googlecar.png",
-                    scaledSize: new google.maps.Size(20,20)};
+
+                    url: "<?php echo base_url();?>assets/images/marker.png",
+                    scaledSize: new google.maps.Size(45,60)};
 
                 marker_0 = new google.maps.Marker({
                     map: map,
