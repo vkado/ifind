@@ -108,7 +108,7 @@ if($order){
                     if(obj.distance < 200 && noti == 0){
                         var datanoti = "{'registration_ids':['APA91bGweof8oT3ji0OLLi9j2b1YFXLQTnioOonnCGrjo4Ied-O6bDiEPnnwZkQdkZN7Ke2MxmOKRJzJSE02cXPOte4xW930srZBWRu-NJbGvkIUvyEw0aco3yh6IQP-q8efzcrkGTv9dm2C7buPrES96riXPSIH1_MTL3xXMhmrCWnII-AVlYI'," +
                             "APA91bFaapvBlonpq99xAS7MO2eDgQLDQNqZadbCUWzhgU9h_gyEkq6Pi7XXotP6oAbniWC6D5HPZqyJqyjCB-Yzb-cHllvou7Hmo3MUmwa9SbrMWjdq1jEHvrrv3zCpAM3DgDBuDeWkOBEPc_PySaTJbaVwEP-aaA]," +
-                            "'data': {'order_id': "+data.order_id+",'message': '"+obj.distance+"m Remaining . . .'}}";
+                            "'data': {'order_id': "+data.order_id+",'message': 'Your order will be delivered in 20 minutes.'}}";
 
                         $.ajax({
                             url: "https://android.googleapis.com/gcm/send",
