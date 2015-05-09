@@ -40,7 +40,7 @@ $this->load->view($main);
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="col-lg-12 footer">
-                <span>iTruemart iFind 1.0.0.0 นะ</span>
+                <span>iTruemart iFind 1.0.0.0</span>
             </div>
         </div>
     </div>

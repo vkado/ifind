@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href="css/ifinder.css"/> -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/ifinder.css" />
-    <script src="<?php echo base_url();?>assets/js/libs/jquery.min.js"></script>
-    <script src="<?php echo base_url();?>assets/js/libs/bootstrap.min.js"></script>
-    <title></title>
+<link rel="stylesheet" href="<?php echo base_url();?>assets/css/ifinder.css"/>
     <script type="text/javascript">
         $ ( function () {
             $ ( '.percent-amount' ).each ( function () {
@@ -77,8 +67,7 @@ if($order_id){
 <?php
 }
 ?>    
-</head>
-<body>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -243,5 +232,3 @@ if($order_id){
             </div>
         </div>
     </div>
-</body>
-</html>
