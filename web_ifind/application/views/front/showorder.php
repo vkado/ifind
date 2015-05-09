@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/ifinder.css"/>
+<section id="order" class="order-section">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -163,7 +164,7 @@
             </div>
         </div>
     </div>
-
+</section>
 <script src="<?php echo base_url();?>assets/js/script.min.js"></script>
 
 <script type="text/javascript">
