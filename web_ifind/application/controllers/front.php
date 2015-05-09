@@ -137,8 +137,8 @@ class Front extends MY_Controller {
         if($locations){
             $marker = array();
             $marker['position'] = $locations[0];
-            $marker['icon'] = "http://image.weevirus.com/googlecar.png";
-            $marker['icon_scaledSize'] = "20,20";
+            $marker['icon'] = base_url()."assets/images/marker.png";
+            $marker['icon_scaledSize'] = "45,60";
             $marker['animation'] = "DROP";
             $marker['title'] = "iFind";
             $this->googlemaps->add_marker($marker);
