@@ -31,13 +31,10 @@ class Front extends MY_Controller {
         $this->render_page('template');
     }
 
-    public function showOrder()
+    public function showOrder($order_id)
     {
-        
-        if(empty($_POST['order'])){
-            redirect(base_url());        
-        }else{
-            $order_id = $_POST['order'];
+        if(empty($order_id)){
+            redirect("/");
         }
         // create curl resource
         $ch = curl_init();
@@ -66,9 +63,13 @@ class Front extends MY_Controller {
         $this->render_page('template');
     }
 
-    public function showMap($order)
+    public function showMap($order_id)
     {
-        $locations = $this->Location_model->getLocationFromOrder($order);
+        if(empty($order_id)){
+            redirect("/");
+        }
+
+        $locations = $this->Location_model->getLocationFromOrder($order_id);
         if(empty($locations)){
             redirect('?error='.$this->lang->line('no_data'), 'refresh');
         }
@@ -80,7 +81,7 @@ class Front extends MY_Controller {
         }else{
             $location_data_first_point = $location_data;
         }
-        $this->data['order'] = $order;
+        $this->data['order'] = $order_id;
         $this->data['point'] = $location_data_first_point;
 
         $latlong = explode(',', $location_data_first_point);
