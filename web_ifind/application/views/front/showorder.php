@@ -1,73 +1,4 @@
 <link rel="stylesheet" href="<?php echo base_url();?>assets/css/ifinder.css"/>
-    <script type="text/javascript">
-        $ ( function () {
-            $ ( '.percent-amount' ).each ( function () {
-                var percent = $ ( this ).text (),
-                        match = percent.match ( /100%/ );
-
-                if (match !== null && match.length) {
-                    $ ( this ).parent ().addClass ( 'complete' );
-                }
-
-                $ ( this ).parent ().width ( percent );
-            } );
-
-            $ ( '.percent-amount' ).bind ( "DOMSubtreeModified", function () {
-                var percent = $ ( this ).text (),
-                        match = percent.match ( /100%/ );
-
-                if (match !== null && match.length) {
-                    $ ( this ).parent ().addClass ( 'complete' );
-                } else {
-                    $ ( this ).parent ().removeClass ( 'complete' );
-                }
-
-                $ ( this ).parent ().width ( percent );
-            } );
-
-        } );
-    </script>
-
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-<?php
-if($order_id){
-?>
-    <script type="text/javascript">
-
-        var userMarker = {};
-        var carMarker = {};
-
-        var urlHost = '<?php echo NODE_URL; ?>';
-
-        var socket = io.connect(urlHost);
-        socket.on('connect', function(){
-            console.log('client connected');
-            socket.emit('subscribe', {channel: <?php echo $order_id; ?>});
-        });
-
-
-        socket.on('message', function(data){
-            console.log(data.order_id);
-            $.ajax({
-                url: "http://52.74.187.146/ApiTrack/getPercent/"+data.order_id,
-                type: "GET",
-            }).done(function(respon) {
-                console.log(respon);
-                // {"percent":38.14,"order_date":"2015-05-08 13:00:00","duration":842}
-
-                // respon.json.
-                var obj = JSON.parse(respon);
-
-                $("#percent-display").html(obj.percent+'<i>%</i>');
-            });
-
-        });
-
-    </script>
-<?php
-}
-?>    
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -232,3 +163,74 @@ if($order_id){
             </div>
         </div>
     </div>
+
+<script src="<?php echo base_url();?>assets/js/script.min.js"></script>
+
+<script type="text/javascript">
+    $ ( function () {
+        $ ( '.percent-amount' ).each ( function () {
+            var percent = $ ( this ).text (),
+                match = percent.match ( /100%/ );
+
+            if (match !== null && match.length) {
+                $ ( this ).parent ().addClass ( 'complete' );
+            }
+
+            $ ( this ).parent ().width ( percent );
+        } );
+
+        $ ( '.percent-amount' ).bind ( "DOMSubtreeModified", function () {
+            var percent = $ ( this ).text (),
+                match = percent.match ( /100%/ );
+
+            if (match !== null && match.length) {
+                $ ( this ).parent ().addClass ( 'complete' );
+            } else {
+                $ ( this ).parent ().removeClass ( 'complete' );
+            }
+
+            $ ( this ).parent ().width ( percent );
+        } );
+
+    } );
+</script>
+
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<?php
+if($order_id){
+    ?>
+    <script type="text/javascript">
+
+        var userMarker = {};
+        var carMarker = {};
+
+        var urlHost = '<?php echo NODE_URL; ?>';
+
+        var socket = io.connect(urlHost);
+        socket.on('connect', function(){
+            console.log('client connected');
+            socket.emit('subscribe', {channel: <?php echo $order_id; ?>});
+        });
+
+
+        socket.on('message', function(data){
+            console.log(data.order_id);
+            $.ajax({
+                url: "http://52.74.187.146/ApiTrack/getPercent/"+data.order_id,
+                type: "GET",
+            }).done(function(respon) {
+                console.log(respon);
+                // {"percent":38.14,"order_date":"2015-05-08 13:00:00","duration":842}
+
+                // respon.json.
+                var obj = JSON.parse(respon);
+
+                $("#percent-display").html(obj.percent+'<i>%</i>');
+            });
+
+        });
+
+    </script>
+<?php
+}
+?>
