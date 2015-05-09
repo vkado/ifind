@@ -31,11 +31,18 @@ class Front extends MY_Controller {
         $this->render_page('template');
     }
 
-    public function showOrder($order_id)
+    public function showOrder($order_id="")
     {
+        if($this->input->post('order')){
+            $order_id = $this->input->post('order');
+
+            redirect("showorder/".$order_id);
+        }
+
         if(empty($order_id)){
             redirect("/");
         }
+
         // create curl resource
         $ch = curl_init();
 

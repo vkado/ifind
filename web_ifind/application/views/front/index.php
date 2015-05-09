@@ -7,8 +7,7 @@
 
             <div class="form-group">
                 <?php
-                $attributes = array('method' => 'get');
-                echo form_open('showorder',$attributes);
+                echo form_open('showorder');
                 ?>
                 <div class="input-group input-group-sm">
                     <div class="icon-addon addon-sm">
