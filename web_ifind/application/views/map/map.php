@@ -116,11 +116,9 @@ if($order){
                                 xhr.setRequestHeader('Authorization', 'key=AIzaSyAvHwynUlARS_hU90eMubXscwsDZlH63cE');
                                 xhr.setRequestHeader('Content-Type', 'application/json');
                             }
-                            )
                         }).done(function(respon) {
                             noti++;
-                        }
-                    );
+                        });
                     }
 
                 });
