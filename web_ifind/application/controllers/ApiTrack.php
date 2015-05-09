@@ -82,6 +82,7 @@ class ApiTrack extends MY_Controller {
         $data['percent'] = round(((($base_distance['distance']-$current_distance['distance'])/$base_distance['distance'])*100), 2);
         $data['order_date'] = $order_info[0]->start_at;
         $data['duration'] = $current_distance['duration'];
+        $data['distance'] = $current_distance['distance']
 
         print_r(json_encode($data));
 
