@@ -13,7 +13,7 @@
                         <span class="order-no">Espanade Ratchada</span>
                     </li>
                     <li class="item-status col-3 col-xs-4">
-                        <img src="<?php echo base_url();?>assets/images/btn-calltopickup_normal.png" alt=""/>
+                        <a href="#" class="modal-open" data-toggle="modal" data-target="#myModal"><img src="<?php echo base_url();?>assets/images/btn-calltopickup_normal.png" alt=""/></a>
                     </li>
                 </ul>
             </div>
@@ -199,3 +199,23 @@ if(empty($order)){
     var myLatlng = new google.maps.LatLng(carLocationsLat, carLocationsLong);
     google.maps.event.addDomListener(window, "resize", function() { map.setCenter(myLatlng); }); // Keeps the Pin Central when resizing the browser on responsive sites
 </script>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Contact Information</h4>
+      </div>
+      <div class="modal-body">
+         ITRUEMART <br>
+         02-999-9999
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">CALL</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7278,4 +7278,15 @@ body {
 section#order {
   height: 100%;
 }
+
+.modal-backdrop.fade.in {
+  z-index: 0;
+}
+
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 99999999999999;
+}
+
 /*# sourceMappingURL=ifinder.css.map */
