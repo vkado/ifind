@@ -47,7 +47,7 @@ $this->load->view($main);
 </footer>
 
 
-<script src="<?php echo base_url();?>assets/js/script.min.js"></script>
+
 
 
 

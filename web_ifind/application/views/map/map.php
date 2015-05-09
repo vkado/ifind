@@ -26,6 +26,8 @@
     <?php echo $map['html']; ?>
 </div>
 
+<script src="<?php echo base_url();?>assets/js/script.min.js"></script>
+
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <?php
 if($order){
@@ -93,6 +95,30 @@ if($order){
                     position: carNewLatLng,
                     icon: marker_icon,
                     title: "iFind"
+                });
+
+                $.ajax({
+                    url: "http://52.74.187.146/ApiTrack/getPercent/"+data.order_id,
+                    type: "GET"
+                }).done(function(respon) {
+                    var obj = JSON.parse(respon);
+
+                    if(obj < 200){
+                        var datanoti = "{'registration_ids':['APA91bGweof8oT3ji0OLLi9j2b1YFXLQTnioOonnCGrjo4Ied-O6bDiEPnnwZkQdkZN7Ke2MxmOKRJzJSE02cXPOte4xW930srZBWRu-NJbGvkIUvyEw0aco3yh6IQP-q8efzcrkGTv9dm2C7buPrES96riXPSIH1_MTL3xXMhmrCWnII-AVlYI'],'data': {'order_id': "+data.order_id+",'message': '"+obj.distance+"m Remaining . . .'}}";
+
+                        $.ajax({
+                            url: "https://android.googleapis.com/gcm/send",
+                            type: "POST",
+                            data: JSON.stringify(datanoti),
+                            beforeSend: function(xhr){
+                                xhr.setRequestHeader('Authorization', 'key=AIzaSyAvHwynUlARS_hU90eMubXscwsDZlH63cE');
+                                xhr.setRequestHeader('Content-Type', 'application/json');
+                            }
+                            )
+                        }).done(function(respon) {}
+                    );
+                    }
+
                 });
             }
 

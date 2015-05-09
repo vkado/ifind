@@ -49,3 +49,6 @@ function(e){ LiveAgent.createButton('db2394d3', e); });
             </div>
         </div>
     </section>
+
+
+    <script src="<?php echo base_url();?>assets/js/script.min.js"></script>
