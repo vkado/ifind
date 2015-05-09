@@ -32,11 +32,11 @@
     <!-- About Section -->
     <section id="about" class="about-section">
         <div class="container-fluid no-padding">
-            <div class="row-fluid">
+            <!--div class="row-fluid">
                 <div class="col-lg-12 btn-padding">
                     <a href="#"><img id="btn-tracking" src="<?php echo base_url();?>assets/images/btn_myTrackOrder_normal.png" class="clickbtn"></a>
                 </div>
-            </div>
+            </div-->
 
             <div class="row-fluid">
                 <div class="col-lg-12 btn-padding">
