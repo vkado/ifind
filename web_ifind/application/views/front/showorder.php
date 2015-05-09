@@ -88,11 +88,11 @@
                     </li>
                     <li class="item-status col-3">
                         <p class="text-status">Delivery status</p>
-                        <span class="delivery-status">Shipped</span>
+                        <span class="delivery-status">Delivered</span>
                     </li>
                     <li class="item-status col-1">
                         <p class="text-status">Qty. (items)</p>
-                        <span class="text-default">6</span>
+                        <span class="text-default">1</span>
                     </li>
                     <li class="item-status col-2">
                         <p class="text-status">Estimated delivery</p>
@@ -112,7 +112,7 @@
                         </ul>
                         <div class="inner">
                             <div class="percent-amount">
-                                38<i>%</i>
+                                100<i>%</i>
                             </div>
                         </div>
                     </div>
@@ -124,23 +124,23 @@
                 <ul class="list-unstyled list-status">
                     <li class="item-status col-1">
                         <p class="text-status">Order no.</p>
-                        <span class="order-no">847112</span>
+                        <span class="order-no">837116</span>
                     </li>
                     <li class="item-status col-2">
                         <p class="text-status">Order date</p>
-                        <span class="text-default">26/03/15 14:20:45</span>
+                        <span class="text-default">24/03/15 14:20:45</span>
                     </li>
                     <li class="item-status col-3">
                         <p class="text-status">Delivery status</p>
-                        <span class="delivery-status">Shipped</span>
+                        <span class="delivery-status">Delivered</span>
                     </li>
                     <li class="item-status col-1">
                         <p class="text-status">Qty. (items)</p>
-                        <span class="text-default">6</span>
+                        <span class="text-default">2</span>
                     </li>
                     <li class="item-status col-2">
                         <p class="text-status">Estimated delivery</p>
-                        <span class="text-default">29/03/15</span>
+                        <span class="text-default">27/03/15</span>
                     </li>
                 </ul>
                 <span class="glyphicon glyphicon-chevron-right"></span>
@@ -156,7 +156,7 @@
                         </ul>
                         <div class="inner">
                             <div class="percent-amount">
-                                17<i>%</i>
+                                100<i>%</i>
                             </div>
                         </div>
                     </div>
