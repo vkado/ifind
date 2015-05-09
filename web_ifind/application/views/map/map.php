@@ -64,6 +64,7 @@ if($order){
 
             if(carMarker){
 
+                var noti = 0;
                 var carLastLatLng = new google.maps.LatLng(carMarker.position.A, carMarker.position.F);
                 var carNewLatLng = new google.maps.LatLng(data.lat, data.long);
 
@@ -104,7 +105,7 @@ if($order){
                 }).done(function(respon) {
                     var obj = JSON.parse(respon);
 
-                    if(obj < 200){
+                    if(obj.distance < 200 && noti == 0){
                         var datanoti = "{'registration_ids':['APA91bGweof8oT3ji0OLLi9j2b1YFXLQTnioOonnCGrjo4Ied-O6bDiEPnnwZkQdkZN7Ke2MxmOKRJzJSE02cXPOte4xW930srZBWRu-NJbGvkIUvyEw0aco3yh6IQP-q8efzcrkGTv9dm2C7buPrES96riXPSIH1_MTL3xXMhmrCWnII-AVlYI'],'data': {'order_id': "+data.order_id+",'message': '"+obj.distance+"m Remaining . . .'}}";
 
                         $.ajax({
@@ -116,7 +117,9 @@ if($order){
                                 xhr.setRequestHeader('Content-Type', 'application/json');
                             }
                             )
-                        }).done(function(respon) {}
+                        }).done(function(respon) {
+                            noti++;
+                        }
                     );
                     }
 
